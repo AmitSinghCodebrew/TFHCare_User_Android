@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/details"
+            app:navigationIcon="@drawable/ic_back_white" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/drawable_rounded_top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/startGuideLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="@dimen/dp_16" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/endGuideLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/dp_16" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:fontFamily="@font/campton_semibold"
+                    android:gravity="start"
+                    android:text="@string/app_name"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/sp_18"
+                    app:layout_constraintEnd_toStartOf="@id/tvAmount"
+                    app:layout_constraintStart_toStartOf="@id/startGuideLine"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:fontFamily="@font/campton_semibold"
+                    android:text="@string/app_name"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/sp_16"
+                    app:layout_constraintEnd_toEndOf="@id/endGuideLine"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.borjabravo.readmoretextview.ReadMoreTextView
+                    android:id="@+id/tvDec"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:fontFamily="@font/campton_book"
+                    android:gravity="start"
+                    android:textColor="@color/textColor"
+                    android:textDirection="locale"
+                    android:text="@string/app_name"
+                    android:textSize="@dimen/sp_14"
+                    app:colorClickableText="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="@id/endGuideLine"
+                    app:layout_constraintStart_toStartOf="@id/startGuideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                    app:trimCollapsedText="@string/show_more"
+                    app:trimExpandedText="@string/show_less"
+                    app:trimLength="150"
+                    app:trimLines="3"
+                    app:trimMode="trimModeLength" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAnswer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:alpha="0.8"
+                    android:textDirection="locale"
+                    android:fontFamily="@font/campton_book"
+                    android:gravity="start"
+                    android:text="@string/answer"
+                    android:background="@color/lineColor"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp_14"
+                    android:padding="@dimen/dp_12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDec" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAnswer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="@id/endGuideLine"
+                    app:layout_constraintStart_toStartOf="@id/startGuideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAnswer"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/rv_item_answer" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:id="@+id/clLoader"
+            layout="@layout/item_loader"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
